@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Entry</title>
+    <style>
+        .linked_page{
+            margin-bottom: 3vw;
+            margin-left: 3vw;
+        }
+        .linked_page a{
+            font-size: 2vw;
+            text-decoration: none;
+            color:white;
+        }
+        .note {
+            margin: 0vw 3vw;
+            margin-bottom:3vw ;
+            box-sizing: border-box;
+        }
+         .note p{
+            font-size: 5vh;
+            padding: 1vw 0vw;
+            text-align: center;
+            background-color: #C3ACD0;
+            border-bottom:5px solid #674188;
+            box-shadow: 7px 9px 11px black;
+        }
+        /* css for text area  */
+        form p{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            width: 100%;
+
+        }
+        form label{
+            color: blue;
+            font-size: 3vw;
+            position: relative;
+            top: 10vw;
+        }
+        .EntryForm{
+            display: flex;
+            font-size: 2vw;
+            border-radius: 10px;
+            text-align: justify;
+            padding: 0vh 2vw;
+            background: linear-gradient( #9900F0, #F94C66, #FF85B3);
+            word-spacing: 0.1px;
+            letter-spacing: 0.2px;
+
+        }
+         /* css for text area end here */
+
+        .button-div{
+            display: flex;
+            justify-content: center;
+        }
+        button{
+            margin-left: 11vw;
+            margin-top: 3vw;
+            padding: 2vh 3vw;
+            color: brown;
+            border-radius: 15px;
+            border:none;
+            font-size: 1.5vw;
+            
+        }
+        button:hover{
+            background-color: brown;
+             color: white;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        {%extends "learning_logs/base.html" %}
+    </div>
+    {% block content %}
+</div>
+    <div class="linked_page">
+        <p>
+            <a href="{% url 'topics.html' topic.id %}" > Go back to the Entries : {{topic}}</a>
+        </p>
+        </div>
+    <div class="another_div">
+        <div class="note">
+            <p >Add a new entry</p>
+        </div>
+        <form action="{% url 'new_entry.html' topic.id %}" method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button name="submit">Add Entry</button>
+        </form>
+    </div>
+    {% endblock content %}
+
+</body>
+</html>

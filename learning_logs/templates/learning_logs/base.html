@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base html</title>
+    <style>
+      *{
+        margin: 0; padding: 0;
+      }
+      body{
+        background: linear-gradient(#7FE9DE ,#3B185F);
+        height: 120vh;
+      }
+
+      .heading_div{
+        display: flex;
+        padding: 5vh 2vw ;
+        background: linear-gradient(to right, #9900F0, #F94C66, #FF85B3);
+      }
+      .heading_div  a {
+         text-decoration: none;
+         color: white;
+      }      
+      .second-header{
+        position: relative;
+        top: .3vw;
+        left: 5vw;
+      }
+      .header a{
+        border-radius: 15px;
+        padding: 1vw 3vw;
+        box-shadow: 7px 9px 11px black;
+        border-bottom: 2px solid #00FFD1;
+        background-color: red;
+
+      }
+      .header a:hover{
+        background-color: #00FFD1;
+        color: black;
+        box-shadow: 7px 9px 11px #F94C66;
+
+      }      
+      .second-header a{
+        font-size: 2vw;
+        border-radius: 15px;
+        padding: 1vw 8vw;
+        box-shadow: 7px 9px 11px black;
+        border-bottom: 2px solid #00FFD1;
+        background-color:  blue;
+      }
+            
+      .second-header a:hover{
+        color: red;
+        background-color: #00FFD1;
+        box-shadow: 7px 9px 11px #9900F0;
+      }
+      
+      .paragraph{
+        position: relative;
+        display: flex;
+        justify-content: space-evenly;
+        margin-right: 4vw;
+        bottom: 6vw;
+        left: 65vw;
+        height: 3vw;
+        width: 30vw;
+        font-size: 2vw;
+        padding: 2vh 1vw;
+      }
+      
+      .paragraph a{
+        text-decoration: none;
+        color : white; 
+        position: relative;
+        top: 0.1vw;
+        padding: 0.4vh 1.3vw;
+        border-radius: 5px;
+      }
+      .paragraph a:hover{
+        box-shadow: 5px 9px 11px #F2CD5C;
+        background-color: #FF5F00;
+
+      }
+      .hello{
+        color: white;
+        position: relative;
+        top: 0.4vw;
+      }
+      .third_header{
+        background-color: red;
+      }
+
+    </style>
+</head>
+<body>
+  <div class="heading_div">
+    <h1 class="header">
+      <a href="{% url 'index.html' %}" class="changeName">Learning Log</a>
+    </h1>
+    <h2 class="second-header">
+      <a href="{% url 'topic.html' %}">Topics</a>
+    </h2> 
+</div>
+  
+    <div class="second_heading_div">
+    
+     <div class="username">
+      <p class="paragraph">
+       {% if user.is_authenticated %}
+       <span class="hello">  Hello, {{user.username}} </span>
+       <a href="{% url 'users:logout' %}"> log out </a> 
+       {% else %}
+       <a href = "{% url 'users:register' %}">Register</a> 
+       <a href = "{% url 'users:login' %}">log in </a> 
+       {% endif %}
+      </p>
+     </div>
+
+    {% block content %}{%endblock content %}
+  </div>
+</body>
+</html> 
+

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add a new topics</title>
+</head>
+<style>
+    *{
+        margin: 0; padding: 0;
+    }
+  body{
+    background-color: #C85C8E;
+    box-sizing: border-box;
+
+  }
+  .box{
+    margin: 3vh 2vw;
+    padding: 1vw;
+    font-size: 3vw;
+    background-color: #F1F7B5;
+    border-radius: 10px;
+    box-shadow: 7px 9px 11px black;
+    border-bottom:5px solid #AD8E70 ;
+  }
+  button{
+    margin: 3vh 3vw;
+    padding: 2vh 2vw;
+    font-size: 1.3vw;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 7px 9px 11px black;
+  }
+  button:hover{
+    background-color: #FF6E31;
+  }
+/* CSS to change the padding and color of the textarea */
+textarea {
+    
+    color: red;
+    font-size: 2vw;
+
+}
+
+</style>
+<body>
+
+    <header>
+    {%extends "learning_logs/base.html" %}
+    </header>
+    <div class="container">
+        {% block content %}
+        <div class="box">
+            <p>Add a new topic: </p>
+        </div>
+        
+        <form action="{% url 'new_topics.html' %}" method="post" class="one">
+            {% csrf_token  %}
+                {{form.as_p}}
+            <button name="submit">Add Topic</button>
+        </form>
+
+        {% endblock content %}
+    </div>
+</body>
+</html>

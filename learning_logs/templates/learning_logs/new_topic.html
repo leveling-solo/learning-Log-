@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Store your Entry </title>
+<style>
+    
+    .container{
+        display: flex;
+        flex-direction: column;
+        height: 100vw;
+        background: linear-gradient(#7FE9DE ,#3B185F);
+    }
+    h3{
+        font-size: 4vw;
+        text-align: center;
+        border: 1px solid black;
+        font-weight: lighter;
+        text-shadow:1px 1px 1px #E90064;
+        background-color:black ;
+        color: #C1AEFC;
+        margin: 0vw 32vw;
+        border-radius: 3vw;
+
+        position: relative;
+        bottom: 4.9vw;
+    }
+
+    h5{
+        font-size: 3vw;
+        margin: 2vw 2vw; 
+    }
+    .linking_page a{
+        text-decoration: none;
+        font-size: 3vw;
+        color: blue;
+        margin-left: 1.2vw;
+        padding: 1vh 1vw;
+}
+.linking_page a:hover{
+        border-radius: 12%;
+        background-color:#F2921D ;
+        box-shadow: 7px 9px 11px #F2CD5C;
+}
+
+.date{
+    margin-top: 5vw;
+    margin-bottom: 2vw;
+    font-size: 3vw;
+    text-align: right;
+    color: #F2CD5C;
+    text-shadow: 1px 1px 5px black;
+}
+h1{
+    color: white;
+    text-shadow: 1px 1px 5px black;
+    text-align: justify;
+    margin:3vw 4vw;
+    font-size: 2vw;
+    font-weight: lighter;
+
+}
+
+.edit_center a{
+    text-decoration: none;
+        font-size: 3vw;
+        color: blue;
+        margin-left: 1.2vw;
+        padding: 1vh 1vw;
+}
+.edit_center a:hover{
+    border-radius: 12%;
+        background-color:#CD0404 ;
+        box-shadow: 7px 9px 11px #FF0032;
+        
+}
+
+/* sytle for header  */
+.header-3 .heading_div{
+    padding: 1vh 0vw;
+}
+.header a{
+    font-size: 2vw;
+}
+.header-3 .second-header a{
+    color: red; 
+    font-size:2vw;
+    position: relative;
+    top: 3vw;
+    font-weight: lighter;
+    padding: 1vh 3vw;
+}
+.header-3 .paragraph{
+    position: relative;
+    bottom: 7vw;
+}
+.header-3 .paragraph a{
+color: black;
+}
+
+</style>
+</head>
+<body >
+    <div class="header-3">
+    {%extends  "learning_logs/base.html"%}
+</div>
+{% block content %}
+<div class="container">
+   
+     <h3>
+        Topic :{{topic}}
+     </h3>
+
+     <h5>
+        Entries : about {{topic}}
+     </h5>
+
+      <div class="linking_page">
+        <a href="{% url 'new_entry.html' topic.id %}">Add new Entry </a>
+      </div>
+     <div class="table">
+        <ul>
+            {% for entry in entries %}
+            <li>
+                <p class="date"> {{entry.date|date:'M d , Y H:i'}} </p>
+                <h1 >{{entry.text|linebreaks}}</h1>
+
+            </li>
+            <p class="edit_center">
+                <a href="{% url 'edit_entry.html' entry.id %}"> Edit Entry </a>
+            </p>
+
+            {% empty %}
+            <li>
+                There are no entreis for this topic yet 
+            </li>
+            {% endfor %}
+        </ul>
+     </div>
+</div>
+
+
+{% endblock content %}
+
+</body>
+</html>

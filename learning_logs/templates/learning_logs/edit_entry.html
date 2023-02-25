@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Entry</title>
+    <style>
+        /* style for heading  */
+        header .heading_div{
+    padding: 5vh 0vw;
+}
+.header a{
+    font-size: 2vw;
+}
+header .second-header a{
+    color: red; 
+    font-size:2vw;
+    padding: 1vh 2vw;
+}
+header .paragraph{
+    position: relative;
+}
+header .paragraph a{
+color: #541690;
+}
+        /* style for heading  ends here*/
+        .back_to_topic{
+            margin-bottom: 4vw;
+            margin-left: 3vw;
+            font-size: 3vw;
+        }
+        .back_to_topic a{
+            text-decoration: none;
+            text-transform: capitalize;
+            padding: 2vh 4vw;
+
+            
+            border-radius: 35px;
+        }
+        .back_to_topic a:hover{
+            background-color: #B3005E;
+            box-shadow: 7px 9px 11px #E90064;
+            color: #FC7300;
+            
+        }
+        /* css for text area  */
+        form p{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            width: 100%;
+
+        }
+        form label{
+            color: blue;
+            font-size: 3vw;
+            position: relative;
+            top: 10vw;
+        }
+        .EntryForm{
+            display: flex;
+            font-size: 2vw;
+            border-radius: 10px;
+            text-align: justify;
+            padding: 0vh 2vw;
+            background: linear-gradient( #9900F0, #F94C66, #FF85B3);
+            word-spacing: 0.1px;
+            letter-spacing: 0.2px;
+
+        }
+         /* css for text area end here */
+        .button-div{
+            display: flex;
+            justify-content: center;
+        }
+        button{
+            margin-left: 11vw;
+            margin-top: 3vw;
+            padding: 2vh 3vw;
+            color: brown;
+            border-radius: 15px;
+            border:none;
+            font-size: 1.5vw;
+            
+        }
+        button:hover{
+            background-color: brown;
+             color: white;
+
+        }
+    </style>
+</head>
+<body>
+    <header>
+    {%extends "learning_logs/base.html" %}
+    </header>
+    {% block content %}
+    <div class="back_to_topic">
+
+        <p>
+        
+        <a href="{% url 'topics.html' topic.id %}">Edit Entry: {{topic}}</a>
+        </p>
+    </div>
+    <div class="main_block">
+        <div class="div-form">
+            <form action="{% url 'edit_entry.html' entry.id %}" method="post">
+                {% csrf_token %}
+                {{form.as_p}}
+                <div class="button-div">
+                    <button name="submit">save changes </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock content %}
+</body>
+</html>

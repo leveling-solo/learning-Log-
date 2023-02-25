@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Log</title>
+
+    <style>
+        *{
+    margin: 0; padding: 0;
+}
+
+
+.first-para{
+    
+    color: white;
+    margin: 2vw;
+    font-size: 3vw;
+    width: 90%;
+    height: 40vh;
+    box-sizing: border-box;
+    margin-top: 10vw;
+}
+
+.first-para p{
+    text-align:justify;
+    margin-top: 3vw;
+
+}
+.first-para a{
+   text-align:justify;
+}   
+    </style>
+</head>
+<body>
+  <div class="header1">
+    {%extends  "learning_logs/base.html"%}
+</div>
+    {% block content %}
+    <main>
+        <div class="first-para">
+            <a href = "{% url 'users:register' %}">Create an Account </a>to make your own Leanring Log and list the topics you're learning about 
+
+            <p>
+                when ever you learn something new about a topic, make an entry summarizing what you've learned 
+            </p>
+        </div>
+    </main>
+    {% endblock content %}
+</body>
+</html>

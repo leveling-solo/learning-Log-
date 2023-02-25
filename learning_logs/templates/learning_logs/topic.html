@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topics</title>
+    <style>
+        *{
+            margin: 0; padding: 0;
+        }
+        
+       
+        .topic{
+            font-size: 1.3vw;
+            text-transform: capitalize;
+             margin: 3vh 6vw;
+             padding: 1vh;
+            text-align: center;
+             background-color: black;
+             width: 10vw;
+             border-radius: 10px;
+             box-shadow: 7px 9px 11px blue;
+             border-bottom: 5px solid #CD0404;
+             cursor:pointer;
+             list-style-type: none;
+        }
+        
+        .topic:hover{
+            background-color:#F9F54B ;
+        }
+        .topic a:hover{
+            color: black;
+
+        }
+        .topic a{
+            text-decoration: none;
+            color: white;
+        }
+        .already_added_topics{
+            font-size: 3vw;
+            background-color: #FF5F00;
+            border-radius: 5px;
+            margin-left: 3px;
+            margin-right: 3px;
+            box-sizing: border-box;
+        }
+        h3{
+            font-size: 2vw;
+            text-transform: capitalize;
+             margin: 6vh 6vw;
+             padding: 1vw;
+            text-align: center;
+             background-color: #CD0404;
+             width: 20vw;
+             border-radius: 10px;
+             box-shadow: 7px 9px 11px blue;
+             cursor:pointer;  
+             border-bottom: 5px solid black;
+            }
+            h3 a{
+                text-decoration: none;
+            color: white;
+        }
+        h3:hover{
+            background-color:#F806CC;
+        }
+    </style>
+</head>
+<body>
+    <div class="link">
+    {%extends  "learning_logs/base.html"%}
+    
+</div>
+    {% block content %}  
+    <div class="another-link-page">
+        <h3>
+            <a href="{% url 'new_topics.html' %}">Add New topics</a>
+        </h3>
+    </div>
+      <div class="already_added_topics">
+        <p>Already Added Topics</p>
+      </div>
+<ul  class="container">
+    {%for topic in topics %}
+    <li class="topic">
+         <a href="{% url 'topics.html' topic.id %}">{{topic}}</a>
+    </li>
+    {% empty %}
+    <li>
+        No topics have been added yet. 
+    </li>
+    {% endfor %}
+</ul>
+
+    {% endblock content %}  
+</body>
+</html>
